@@ -2,4 +2,5 @@
 
 # Usage:
 
-there's 3 folders for 3 types of XSS, DOM-Based, Reflected and Stored.In each folder there's a smaller README that explains how to start the server for each one.
+there's 3 folders for 3 types of XSS: DOM-Based, Reflected and Stored.
+In each folder there's a smaller README that explains how to start the server for each one.
