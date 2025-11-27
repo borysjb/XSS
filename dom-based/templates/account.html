@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Account</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2, h3 {
+            margin-top: 0;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 16px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #searchbox {
+            margin: 10px 0;
+            color: #444;
+            font-size: 14px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        hr {
+            margin: 25px 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+
+        a {
+            text-decoration: none;
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Your Account</h2>
+
+    <p>Welcome, <strong>{{ username }}</strong>!</p>
+    <p>This is your account dashboard.</p>
+
+    <hr>
+
+    <h3>Your Items</h3>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="search"
+            placeholder="Search items..."
+            onkeydown="if (event.key === 'Enter') filterList()"
+        >
+        <button onclick="filterList()">Search</button>
+    </div>
+
+    <div id="searchbox"></div>
+
+    <ul id="itemList">
+        <li>Account Settings</li>
+        <li>Order History</li>
+        <li>Saved Addresses</li>
+        <li>Payment Methods</li>
+        <li>Support Tickets</li>
+    </ul>
+
+    <hr>
+
+    <a href="{{ url_for('logout') }}">Logout</a>
+</div>
+
+<script>
+    function filterList() {
+        const query = document.getElementById("search").value.toLowerCase();
+        const items = document.getElementById("itemList").getElementsByTagName("li");
+        const searchbox = document.getElementById("searchbox");
+
+        if (query === "") {
+            searchbox.innerHTML = "";
+        } else {
+            searchbox.innerHTML =
+                "Showing results for <b>" + query + "</b>";
+        }
+
+        for (let i = 0; i < items.length; i++) {
+            const text = items[i].textContent.toLowerCase();
+            items[i].style.display = text.includes(query) ? "" : "none";
+        }
+    }
+</script>
+
+</body>
+</html>
