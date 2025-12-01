@@ -4,6 +4,15 @@ app = Flask(__name__)
 app.secret_key = "dev-secret-key"  # change in production
 
 
+@app.route("/secret")
+def secret():
+    with open("flag.txt", "r") as flag:
+        return flag.read(), 200, {"Content-Type": "text/plain"}
+
+@app.route("/")
+def index():
+    return redirect(url_for("login"))
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -11,7 +20,7 @@ def login():
         password = request.form.get("password")
 
         # VERY basic authentication (demo only)
-        if username and password:
+        if username=="user" and password=="user":
             session["user"] = username
             return redirect(url_for("account"))
 
