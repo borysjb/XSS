@@ -1,6 +1,12 @@
-# Disclaimer: files found here are purposefully left with vulnerabilities open. Only use in a safe environment for education purposes
+### XSS Attacks - Instrukcja
 
-# Usage:
+##Prerequisites:
 
-there's 3 folders for 3 types of XSS: DOM-Based, Reflected and Stored.
-In each folder there's a smaller README that explains how to start the server for each one.
+- Przeglądarka internetowa
+- Konto w [WebSecurity Academy](https://portswigger.net/web-security)
+- Opcjonalnie: [Burp Suite](https://portswigger.net/burp/communitydownload)
+- Podstawowa znajomość HTML oraz Javascript
+
+##Stored XSS
+
+[Laboratorium 1]()
