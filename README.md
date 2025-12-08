@@ -33,7 +33,7 @@ Wstaw payload w komentarz
 <summary> <b> Kliknij aby rozwinąć kolejne wskazówki</b></summary>
 <details>
   <summary> 1. </summary>
-  Przyjrzyj się jak aplikacja przetwarza komentarz po opublikowaniu go, szukaj parametrów ```onclick```
+  Przyjrzyj się jak aplikacja przetwarza komentarz po opublikowaniu go, szukaj parametrów ```onclick``` `id`
 </details>
 <details><summary>2.</summary>
 Sprawdź jak aplikacja filtruje znaki w parametrze "Website", i w jaki sposób trafiają one do ```onclick```
