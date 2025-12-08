@@ -17,9 +17,9 @@
 [Laboratorium 1](https://portswigger.net/web-security/cross-site-scripting/stored/lab-html-context-nothing-encoded)
 
 <summary> <b> Kliknij aby rozwinąć kolejne wskazówki </b> </summary>
-<details> 
-1. Znajdź formularz zapisujący dane po stronie serwera.
+<details> <summary> 1. </summary>
+Znajdź formularz zapisujący dane po stronie serwera.
 </details>
-<details>
+<details> <summary> 2.</summary>
 2. Wstaw payload w komentarz
 </details>
