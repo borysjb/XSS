@@ -25,12 +25,10 @@ Wstaw payload w komentarz
 </details>
 <details>
   <summary> 3. - Rozwiązanie</summary>
-  Payload ```<script> alert(1);</script>```
+  Payload `<script> alert(1);</script>`
 </details>
 
-### [Laboratorium 2] (https://portswigger.net/web-security/cross-site-scripting/contexts/lab-onclick-event-angle-brackets-double-quotes-html-encoded-single-quotes-backslash-escaped)
-
-W tym laboratorim przyda się Burpsuite
+### [Laboratorium 2](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-onclick-event-angle-brackets-double-quotes-html-encoded-single-quotes-backslash-escaped)
 
 <summary> <b> Kliknij aby rozwinąć kolejne wskazówki</b></summary>
 <details>
@@ -41,5 +39,5 @@ W tym laboratorim przyda się Burpsuite
 Sprawdź jak aplikacja filtruje znaki w parametrze "Website", i w jaki sposób trafiają one do ```onclick```
 </details>
 <details><summary>3.</summary>
-Zastanów się (wygooglaj) jak można sprawić aby ```onclick``` wykonał więcej niż jedną funkcję JS
+Zastanów się (wygooglaj) jak można sprawić aby ` onclick ` wykonał więcej niż jedną funkcję JS
 </details>
