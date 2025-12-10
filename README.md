@@ -4,7 +4,7 @@ Justyna Michalik, Hubert Korzeniowski, Borys Jarnot-Bałuszek
 
 ## 1. Wstęp
 W ramach tego laboratorium zajmiemy się analizą oraz praktycznym wykorzystaniem podatności typu **Cross-Site Scripting (XSS)**.  
-Ćwiczenia wykonujemy z użyciem platformy **PortSwigger Web Security Academy**, która udostępnia interaktywne scenariusze ataków. :contentReference[oaicite:2]{index=2}
+Ćwiczenia wykonujemy z użyciem platformy **PortSwigger Web Security Academy**, która udostępnia interaktywne scenariusze ataków. 
 
 ### Wymagania i narzędzia
 - Przeglądarka internetowa (Chrome / Firefox)  
@@ -37,13 +37,14 @@ W ramach tego laboratorium zajmiemy się analizą oraz praktycznym wykorzystanie
 https://portswigger.net/web-security/cross-site-scripting/contexts/lab-html-context-with-all-standard-tags-blocked
 
 ### Kroki
+<details>
 <div class="step">1. Sprawdź, jak aplikacja reaguje na różne tagi HTML w parametrze search. Podpowiedź: nie wszystkie tagi są traktowane tak samo. </div>
 <div class="step">2. Zauważ, że część tagów jest filtrowana, ale pewne niestandardowe tagi nie podlegają blokadzie — spróbuj użyć tagu, który nie istnieje w HTML. </div>
 <div class="step">3. Sprawdź, czy w niestandardowych tagach aplikacja zachowuje atrybuty i czy można wykorzystać takie atrybuty do wywołania zdarzeń. </div>
 <div class="step">4. Zaprojektuj sposób automatycznego wywołania zdarzenia bez udziału użytkownika — pamiętaj, że element musi być możliwy do aktywowania przez przeglądarkę. </div>
 <div class="step">5. Przeglądarka przy nawigacji do fragmentu #id może próbować ustawić fokus lub przesunąć widok — połącz to z eventem reagującym na fokus. </div>
 <div class="step">6. Stwórz własny niestandardowy element z odpowiednimi właściwościami, aby uzyskać automatyczne wykonanie JS. </div>
-
+</details>
 ---
 
 ## 4.2 Zadanie 2 – Stored XSS
@@ -52,21 +53,23 @@ https://portswigger.net/web-security/cross-site-scripting/contexts/lab-html-cont
 https://portswigger.net/web-security/cross-site-scripting/stored/lab-html-context-nothing-encoded  
 
 ### Kroki
+<details>
 <div class="step">1. Znajdź formularz zapisujący dane po stronie serwera.</div>
 <div class="step">2. Wstaw payload w komentarz: &lt;script&gt;alert(1)&lt;/script&gt; </div>
-
+</details>
 ---
 
 ### Laboratorium 2 (mniej łatwe)  
 https://portswigger.net/web-security/cross-site-scripting/contexts/lab-onclick-event-angle-brackets-double-quotes-html-encoded-single-quotes-backslash-escaped  
 
-To laboratorium opiera się na tym samym blogu co poprzednie, lecz zawiera dodatkowe mechanizmy filtracji, które są niepełne, co prowadzi do podatności. :contentReference[oaicite:3]{index=3}
+To laboratorium opiera się na tym samym blogu co poprzednie, lecz zawiera dodatkowe mechanizmy filtracji, które są niepełne, co prowadzi do podatności. 
 
 ### Kroki
+<details>
 <div class="step">1. Przeanalizuj dokładnie, jak aplikacja przetwarza pole “Website” w komentarzu i zobacz, gdzie trafia ono w generowanym HTML. </div>
 <div class="step">2. Sprawdź filtrowanie znaków — porównaj surowy input i finalny HTML wyświetlany przez przeglądarkę.</div>
 <div class="step">3. Zwróć uwagę na działanie HTML Entities wewnątrz atrybutów JS, np. onclick="...". Zwłaszcza na sposób kodowania apostrofów: [url][encoded ’] - alert(1) - [encoded ’]</div>
-
+</details>
 ---
 
 ## 4.3 Zadanie 3 – DOM-based XSS
@@ -79,13 +82,14 @@ https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-innerhtm
 To laboratorium prezentuje zagrożenie wynikające z używania `innerHTML` bez filtrowania.
 
 ### Kroki
+<details>
 <div class="step">1. Wyszukaj coś na stronie — zobaczysz, że strona generuje fragment HTML wyświetlający twoje zapytanie.</div>
 <div class="step">2. Sprawdź, jak aplikacja reaguje na różne tagi HTML (np. &lt;i&gt;, &lt;b&gt;).</div>
 <div class="step">3. Otwórz konsolę deweloperską i przeanalizuj kod JS.</div>
 <div class="step">4. Znajdź fragment, który operuje na location.search — zobaczysz, że twoje wyszukiwanie tam trafia, więc nie musisz ręcznie edytować adresu URL.</div>
 <div class="step">5. Zaprojektuj payload manipulujący DOM, wstrzykujący JS.</div>
 <div class="step">6. Spoiler: &lt;img src=x onerror=alert(1)&gt;</div>
-
+</details>
 ---
 
 ### Laboratorium 2  
@@ -94,28 +98,14 @@ https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-document
 To laboratorium działa podobnie do poprzedniego, ale zamiast `innerHTML` używa `document.write`.  
 
 ### Kroki
+<details>
 <div class="step">1. Wpisz dowolną wartość w pole input na stronie.</div>
 <div class="step">2. Zauważ, że podobnie jak wcześniej — brak filtrowania przed wstawieniem wartości do HTML.</div>
 <div class="step">3. Przeglądając kod, zauważysz, że input trafia bezpośrednio do document.write.</div>
 <div class="step">4. Zaprojektuj payload umożliwiający wstrzyknięcie skryptu. </div>
 <div class="step">5. W URL po query znajduje się sekwencja `">`, co pozwala na zakończenie aktualnego znacznika i wstawienie własnego HTML.</div>
 <div class="step">6. Spoiler: `&quot;&gt;&lt;svg onload=alert(1)&gt;`</div>
-
+</details>
 
 ---
 
-<style>
-.step {
-  color: #384;
-  background: #444;
-  padding: 6px;
-  margin: 4px 0;
-  border-radius: 6px;
-  transition: 0.3s;
-  opacity: 0.25;
-}
-.step:hover {
-  opacity: 1;
-  background: #e8e8e8;
-}
-</style>
